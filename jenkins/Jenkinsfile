@@ -2,6 +2,9 @@ pipeline {
     agent any
 
     stages {
+        def mvnHome = tool name: '3.6.3', type: 'maven'
+    sh "${mvnHome}/bin/mvn -version"
+
         stage('Build') {
             steps {
                 sh 'mvn -B -DskipTests clean package'
